@@ -2,6 +2,11 @@
 <button type="button" class="btn btn-secondary"><%= link_to 'GiVe SoMe NeW tAsKs', tasks_new_path%></button>
 <% @tasks.each do |task| %>
 <ul>
-<h3><%= link_to "#{task.title}", task_path(task.id) %> <%= link_to "🗑", task_path(task), method: :delete %></h3>
+  <% if task.completed %>
+          <i class="fa fa-check-square-o"></i>
+        <% else %>
+          <i class="fa fa-square-o"></i>
+        <% end %>
+  <h3><%= link_to "#{task.title}", task_path(task.id) %> <%= link_to "🗑", task_path(task), method: :delete %></h3>
 </ul>
 <% end %>
